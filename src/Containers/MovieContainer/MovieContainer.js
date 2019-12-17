@@ -7,6 +7,12 @@ class MovieContainer extends Component {
   constructor() {
     super();
   }
+
+  componentDidMount() {
+    //add the apiCall
+    //then we will set the state with the Movies
+    //this will need to trigger mapDispatchToProps with isLoading and Movies changing
+  }
   // const displayMovies = movies.map(movie => {
   //   return (
   //     <Movie
@@ -16,7 +22,7 @@ class MovieContainer extends Component {
   //   )
   // })
   render() {
-    if (this.props.state.isLoading) {
+    if (this.props.isLoading) {
       return <Loading />
     }
     return (
