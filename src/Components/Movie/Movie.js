@@ -1,7 +1,7 @@
 import React from 'react';
 import './Movie.scss';
 
-const Movie = ({ title, releaseDate, poster, backdrop, overview, avgRating }) => {
+const Movie = ({ title, releaseDate, poster, backdrop, overview, avgRating, userRating }) => {
   return (
     <article className='movie-card'>
       <img src={poster} className='movie-poster'/>
@@ -9,6 +9,7 @@ const Movie = ({ title, releaseDate, poster, backdrop, overview, avgRating }) =>
       <p>{releaseDate}</p>
       <p>{overview}</p>
       <p>{avgRating}</p>
+      <p>{userRating ? userRating : ''}</p>
     </article>
   )
 }
