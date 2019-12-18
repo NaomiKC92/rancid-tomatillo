@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Movie from '../../Components/Movie/Movie';
 import Loading from '../../Components/Loading/Loading';
+import { getMovies } from '../../apiCalls';
+import { setMovies, changeLoading } from '../../Actions';
 
 class MovieContainer extends Component {
   constructor() {
@@ -9,9 +11,11 @@ class MovieContainer extends Component {
   }
 
   componentDidMount() {
-    //add the apiCall
-    //then we will set the state with the Movies
-    //this will need to trigger mapDispatchToProps with isLoading and Movies changing
+    getMovies()
+      .then(data => {
+        this.props.setMovies(data.movies);
+        this.props.changeLoading(this.props.isLoading)
+      })
   }
   // const displayMovies = movies.map(movie => {
   //   return (
@@ -38,9 +42,10 @@ const mapStateToProps = state => ({
   isLoading: state.isLoading
 });
 
-const mapDispatchToProps = dispatch => {
-
-}
+const mapDispatchToProps = dispatch => ({
+  changeLoading: (isLoading) => dispatch( changeLoading(isLoading)),
+  setMovies: (movies) => dispatch(setMovies(movies))
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
