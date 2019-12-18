@@ -7,3 +7,20 @@ export const getMovies = () => {
       return res.json();
     })
 };
+
+export const getUser = (user) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
+    .then(res => {
+      if (!res.ok) {
+        throw Error('Uh-oh... Did you forget your movie ticket??')
+      }
+      return res.json();
+    })
+};
