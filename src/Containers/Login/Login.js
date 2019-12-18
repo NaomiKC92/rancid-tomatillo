@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import './Login.scss';
 import { connect } from 'react-redux';
+import { getUser } from '../../apiCalls';
 
 class Login extends Component {
   constructor() {
@@ -31,12 +32,28 @@ class Login extends Component {
         this.setState({ error: errorState })
       }
     });
+    this.checkReady();
   }
 
-  
+  checkReady = () => {
+    let ready = true;
+    const { error } = this.state.error;
+    Object.keys(error).forEach(key => {
+      if (key) {
+        ready = false;
+      }
+    })
+    ready ? this.logInUser() : null;
+  }
 
   logInUser = () => {
-    //fetch post, .catch(err => this.setState({message: err}))
+    let user = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    getUser(user)
+      .then(data => )
+      .catch(err => this.setState({ message: err }));
   }
   
   
@@ -78,5 +95,9 @@ class Login extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  
+}
 
-export default Login;
+
+export default connect(null, mapDispatchToProps)(Login);
