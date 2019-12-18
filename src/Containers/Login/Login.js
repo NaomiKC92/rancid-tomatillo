@@ -10,8 +10,8 @@ class Login extends Component {
       email: '',
       password: '',
       error: {
-        email: false,
-        password: false,
+        email: '',
+        password: '',
       },
       message: '',
     }
@@ -25,47 +25,49 @@ class Login extends Component {
     const errorState = {...this.state.error};
     Object.keys(errorState).forEach(key => {
       if (!this.state[key]) {
-        errorState[key] = true;
+        errorState[key] = 'error';
         this.setState({ error: errorState });
       } else {
-        errorState[key] = false;
+        errorState[key] = '';
         this.setState({ error: errorState })
       }
     });
+    console.log('34.5');
     this.checkReady();
   }
 
   checkReady = () => {
     let ready = true;
-    const { error } = this.state.error;
+    const error = {...this.state.error};
     Object.keys(error).forEach(key => {
-      if (key) {
+      if (this.state.error[key]) {
         ready = false;
       }
     })
-    ready ? this.logInUser() : null;
+    if (ready) {
+      this.logInUser();
+    };
   }
 
   logInUser = () => {
+    console.log('oh hello');
     let user = {
       email: this.state.email,
       password: this.state.password
     };
     getUser(user)
-      .then(data => )
-      .catch(err => this.setState({ message: err }));
+      .then(data => console.log(data))
+      .catch(err => this.setState({ message: err.message }));
   }
   
   render() {
-    const emailError = this.state.error.email ? 'error' : '';
-    const passwordError = this.state.error.password ? 'error' : '';
     return (
       <form >
         <h2>Please Log In</h2>
         <div className="label-input">
-          <label for="email">Email:</label><br />
+          <label htmlFor="email">Email:</label><br />
           <input
-            className={emailError}
+            className={this.state.error.email}
             id="email"
             name="email"
             type="text"
@@ -75,9 +77,9 @@ class Login extends Component {
           /><br />
         </div>
         <div className="label-input">
-        <label for="password">Password:</label><br />
+        <label htmlFor="password">Password:</label><br />
         <input
-          className={passwordError}
+          className={this.state.error.password}
           id="password"
           name="password"
           type="password"
@@ -93,9 +95,9 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+// const mapDispatchToProps = dispatch => {
 
-}
+// }
 
 
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

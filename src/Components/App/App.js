@@ -8,7 +8,8 @@ import Login from '../../Containers/Login/Login';
 const App = () => {
   return (
     <div className='App'>
-      <Route exact path='/' component={MovieContainer}/>
+      <Login />
+      {/* <Route exact path='/' component={MovieContainer}/> */}
     </div>
   );
 }
