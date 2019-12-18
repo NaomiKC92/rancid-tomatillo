@@ -17,21 +17,29 @@ class MovieContainer extends Component {
         this.props.changeLoading(this.props.isLoading)
       })
   }
-  // const displayMovies = movies.map(movie => {
-  //   return (
-  //     <Movie
-  //       {...movie}
-  //       key={movie.id}
-  //     />
-  //   )
-  // })
+
   render() {
     if (this.props.isLoading) {
       return <Loading />
     }
+    const displayMovies = this.props.movies.map( movie => {
+      return (
+        <Movie 
+          title={movie.title}
+          poster={movie.poster_path}
+          backdrop={movie.backdrop_path}
+          releaseDate={movie.release_date}
+          overview={movie.overview}
+          avgRating={movie.avg_rating}
+          key={movie.id}
+        />
+      )
+    })
+
     return (
       <main>
         <h1>Oh hello - Movies Here</h1>
+        {displayMovies}
       </main>
     )
   }
