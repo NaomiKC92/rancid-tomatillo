@@ -31,17 +31,13 @@ class Login extends Component {
         this.setState({ error: errorState })
       }
     });
-    this.checkPassword();
   }
 
-  checkPassword = () => {
-    if (this.state.password !== 'acb123' && this.state.email !== 'greg@turing.io') {
-      this.setState({ message: 'Incorrect Email/Password Combination' })
-    } else {
-      this.setState({ message: ''})
-    }
-  }
+  
 
+  logInUser = () => {
+    //fetch post, .catch(err => this.setState({message: err}))
+  }
   
   
 
