@@ -56,8 +56,6 @@ class Login extends Component {
       .catch(err => this.setState({ message: err }));
   }
   
-  
-
   render() {
     const emailError = this.state.error.email ? 'error' : '';
     const passwordError = this.state.error.password ? 'error' : '';
@@ -96,7 +94,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  
+
 }
 
 
