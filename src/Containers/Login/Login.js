@@ -2,6 +2,8 @@ import React, { Component }from 'react';
 import './Login.scss';
 import { connect } from 'react-redux';
 import { getUser } from '../../apiCalls';
+import { Redirect } from 'react-router-dom';
+import { addUser } from '../../Actions'
 
 class Login extends Component {
   constructor() {
@@ -32,7 +34,6 @@ class Login extends Component {
         this.setState({ error: errorState })
       }
     });
-    console.log('34.5');
     this.checkReady();
   }
 
@@ -50,13 +51,16 @@ class Login extends Component {
   }
 
   logInUser = () => {
-    console.log('oh hello');
     let user = {
       email: this.state.email,
       password: this.state.password
     };
     getUser(user)
-      .then(data => console.log(data))
+      .then(data => {
+        this.props.submitUser(data.user);
+        //update user in redux state
+        //redirect to '/'
+      })
       .catch(err => this.setState({ message: err.message }));
   }
   
@@ -95,9 +99,9 @@ class Login extends Component {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => ({
+  submitUser: user => dispatch( addUser(user) )
+})
 
-// }
 
-
-export default Login;
+export default connect(null, mapDispatchToProps)(Login);
