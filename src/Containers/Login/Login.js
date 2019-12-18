@@ -9,9 +9,10 @@ class Login extends Component {
       email: '',
       password: '',
       error: {
-        email: '',
-        password: ''
-      }
+        email: false,
+        password: false,
+      },
+      message: '',
     }
   }
 
@@ -19,25 +20,53 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  
+  checkInputs = () => {
+    const errorState = {...this.state.error};
+    Object.keys(errorState).forEach(key => {
+      if (!this.state[key]) {
+        errorState[key] = true;
+        this.setState({ error: errorState });
+      } else {
+        errorState[key] = false;
+        this.setState({ error: errorState })
+      }
+    });
+    this.checkPassword();
+  }
+
+  checkPassword = () => {
+    if (this.state.password !== 'acb123' && this.state.email !== 'greg@turing.io') {
+      this.setState({ message: 'Incorrect Email/Password Combination' })
+    } else {
+      this.setState({ message: ''})
+    }
+  }
+
   
   
 
   render() {
+    const emailError = this.state.error.email ? 'error' : '';
+    const passwordError = this.state.error.password ? 'error' : '';
     return (
-      <form onSubmit={dostuff}>
-        <h2>Please LogIn</h2>
-        <label for="email">Email:</label>
+      <form >
+        <h2>Please Log In</h2>
+        <div className="label-input">
+          <label for="email">Email:</label><br />
+          <input
+            className={emailError}
+            id="email"
+            name="email"
+            type="text"
+            placeholder="Email..."
+            onChange={this.handleChange}
+            value={this.state.email}
+          /><br />
+        </div>
+        <div className="label-input">
+        <label for="password">Password:</label><br />
         <input
-          id="email"
-          name="email"
-          type="text"
-          placeholder="Email..."
-          onChange={this.handleChange}
-          value={this.state.email}
-        />
-        <label for="password">Password:</label>
-        <input
+          className={passwordError}
           id="password"
           name="password"
           type="password"
@@ -45,11 +74,13 @@ class Login extends Component {
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <button type="button">Log In</button>
+        </div>
+        <p className='error-msg'>{this.state.message}</p>
+        <button type="button" onClick={this.checkInputs}>Log In</button>
       </form>
     )
   }
 }
 
 
-// export default connect;
+export default Login;
