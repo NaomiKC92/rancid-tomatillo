@@ -3,6 +3,9 @@ export const user = (state = null, action) => {
     case 'ADD_USER':
       return action.user;
 
+    case 'SIGN_OUT':
+      return null;
+
     default:
       return state
   }

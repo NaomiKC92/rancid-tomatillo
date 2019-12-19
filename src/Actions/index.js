@@ -12,3 +12,7 @@ export const addUser = user => ({
   type: 'ADD_USER',
   user
 });
+
+export const signOut = () => ({
+  type: 'SIGN_OUT'
+});
