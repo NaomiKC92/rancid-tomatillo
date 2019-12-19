@@ -16,3 +16,8 @@ export const addUser = user => ({
 export const signOut = () => ({
   type: 'SIGN_OUT'
 });
+
+export const updateRatings = ratings => ({
+  type: 'UPDATE_RATINGS',
+  ratings
+})

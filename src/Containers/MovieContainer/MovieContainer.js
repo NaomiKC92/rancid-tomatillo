@@ -18,8 +18,6 @@ class MovieContainer extends Component {
       })
   }
 
-  //getRatings -> get all the ratings for the signed in user.... then map over movies array and add the userRating property -> match movie_id to movie_id
-
   render() {
     if (this.props.isLoading) {
       return <Loading />
@@ -41,6 +39,7 @@ class MovieContainer extends Component {
           overview={movie.overview}
           avgRating={movie.avg_rating}
           userRating={movie.userRating}
+          user={this.props.user}
           key={movie.id}
         />
       )

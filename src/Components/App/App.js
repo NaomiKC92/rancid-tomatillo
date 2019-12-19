@@ -16,7 +16,7 @@ const App = ({ movies, user }) => {
       <Route path='/login' component={Login} />
       <Route path='/movies/:id' render={({ match }) => {
         const movie = movies.find(movie => movie.id === parseInt(match.params.id));
-        return <MoviePage {...movie}/>
+        return <MoviePage {...movie} user={user}/>
       }}/>
     </div>
   );

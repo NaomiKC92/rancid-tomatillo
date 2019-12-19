@@ -33,3 +33,20 @@ export const getUserRatings = id => {
     return res.json();
   })
 }
+
+export const postRating = (id, rating, userId) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({ movie_id: id, rating }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`, options)
+    .then(res => {
+      if (!res.ok) {
+        throw Error('Could not post your rating')
+      }
+    return res.json();
+  })
+}
