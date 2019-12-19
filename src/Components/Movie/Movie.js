@@ -1,7 +1,8 @@
 import React from 'react';
 import './Movie.scss';
+import { Link } from 'react-router-dom';
 
-const Movie = ({ title, releaseDate, poster, backdrop, overview, avgRating, userRating }) => {
+const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, userRating }) => {
   return (
     <article className='movie-card'>
       <img src={poster} className='movie-poster'/>
@@ -10,6 +11,7 @@ const Movie = ({ title, releaseDate, poster, backdrop, overview, avgRating, user
       <p>{overview}</p>
       <p>{avgRating}</p>
       <p>{userRating ? userRating : ''}</p>
+      <Link to={`movies/${id}`}>Show More</Link>
     </article>
   )
 }

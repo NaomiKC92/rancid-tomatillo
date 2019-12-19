@@ -25,6 +25,7 @@ class MovieContainer extends Component {
     const displayMovies = this.props.movies.map( movie => {
       return (
         <Movie 
+          id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
           backdrop={movie.backdrop_path}

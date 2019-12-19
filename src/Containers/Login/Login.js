@@ -3,7 +3,8 @@ import './Login.scss';
 import { connect } from 'react-redux';
 import { getUser } from '../../apiCalls';
 import { Redirect } from 'react-router-dom';
-import { addUser } from '../../Actions'
+import { addUser, changeLoading } from '../../Actions';
+
 
 class Login extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class Login extends Component {
         password: '',
       },
       message: '',
+      ready: false
     }
   }
 
@@ -58,13 +60,16 @@ class Login extends Component {
     getUser(user)
       .then(data => {
         this.props.submitUser(data.user);
-        //update user in redux state
-        //redirect to '/'
+        this.props.changeLoading(false)
+        this.setState({ready: true})
       })
       .catch(err => this.setState({ message: err.message }));
   }
   
   render() {
+    if(this.state.ready) {
+      return <Redirect to='/' />
+    }
     return (
       <form >
         <h2>Please Log In</h2>
@@ -100,7 +105,8 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  submitUser: user => dispatch( addUser(user) )
+  submitUser: user => dispatch( addUser(user) ),
+  changeLoading: (isLoading) => dispatch( changeLoading(isLoading))
 })
 
 
