@@ -10,7 +10,7 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
       <p>{releaseDate}</p>
       <p>{overview}</p>
       <p>{avgRating}</p>
-      <p>{userRating ? userRating : ''}</p>
+      <p>Your Rating: {userRating ? userRating : ''}</p>
       <Link to={`movies/${id}`}>Show More</Link>
     </article>
   )
