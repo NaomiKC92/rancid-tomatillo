@@ -24,3 +24,12 @@ export const getUser = (user) => {
       return res.json();
     })
 };
+
+export const getUserRatings = id => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`).then(res => {
+    if (!res.ok) {
+      throw Error('Could not find your ratings')
+    }
+    return res.json();
+  })
+}
