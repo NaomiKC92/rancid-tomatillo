@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Movie.scss';
 import { Link } from 'react-router-dom';
+import RatingForm from '../../Containers/RatingForm/RatingForm';
 
-const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, userRating }) => {
+const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, userRating, user }) => {
   return (
     <article className='movie-card'>
       <img src={poster} className='movie-poster'/>
@@ -10,7 +11,8 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
       <p>{releaseDate}</p>
       <p>{overview}</p>
       <p>{avgRating}</p>
-      <p>{userRating ? userRating : ''}</p>
+      {userRating && <p> Your Rating: {userRating}</p>}
+      {user && <RatingForm userId={user.id} movieId={id}/>}
       <Link to={`movies/${id}`}>Show More</Link>
     </article>
   )

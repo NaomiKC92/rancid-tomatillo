@@ -1,7 +1,7 @@
 import React, { Component }from 'react';
 import './Login.scss';
 import { connect } from 'react-redux';
-import { getUser } from '../../apiCalls';
+import { getUser, getUserRatings } from '../../apiCalls';
 import { Redirect } from 'react-router-dom';
 import { addUser, changeLoading } from '../../Actions';
 
@@ -36,20 +36,7 @@ class Login extends Component {
         this.setState({ error: errorState })
       }
     });
-    this.checkReady();
-  }
-
-  checkReady = () => {
-    let ready = true;
-    const error = {...this.state.error};
-    Object.keys(error).forEach(key => {
-      if (this.state.error[key]) {
-        ready = false;
-      }
-    })
-    if (ready) {
-      this.logInUser();
-    };
+    this.logInUser();
   }
 
   logInUser = () => {
@@ -59,13 +46,17 @@ class Login extends Component {
     };
     getUser(user)
       .then(data => {
-        this.props.submitUser(data.user);
-        this.props.changeLoading(false)
-        this.setState({ready: true})
+        getUserRatings(data.user.id)
+          .then(ratings => {
+            data.user.ratings = ratings.ratings;
+            this.props.submitUser(data.user);
+            this.props.changeLoading(false);
+            this.setState({ready: true});
+          })
       })
       .catch(err => this.setState({ message: err.message }));
   }
-  
+
   render() {
     if(this.state.ready) {
       return <Redirect to='/' />

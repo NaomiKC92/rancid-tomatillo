@@ -22,9 +22,15 @@ class MovieContainer extends Component {
     if (this.props.isLoading) {
       return <Loading />
     }
-    const displayMovies = this.props.movies.map( movie => {
+    const displayMovies = this.props.movies.map(movie => {
+      if (this.props.user) {
+        let foundRating = this.props.user.ratings.find(rating => rating.movie_id === movie.id);
+        if (foundRating) {
+          movie.userRating = foundRating.rating;
+        }
+      }
       return (
-        <Movie 
+        <Movie
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
@@ -32,6 +38,8 @@ class MovieContainer extends Component {
           releaseDate={movie.release_date}
           overview={movie.overview}
           avgRating={movie.avg_rating}
+          userRating={movie.userRating}
+          user={this.props.user}
           key={movie.id}
         />
       )
@@ -48,7 +56,8 @@ class MovieContainer extends Component {
 
 const mapStateToProps = state => ({
   movies: state.movies,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

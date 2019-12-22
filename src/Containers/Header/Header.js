@@ -2,21 +2,21 @@ import React from 'react';
 import './Header.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { signOut } from '../../Actions';
+import { signOut, changeLoading } from '../../Actions';
 
-const Header = ({ user, signOut }) => {
+const Header = ({ user, signOut, changeLoading }) => {
   if (!user) {
   return (
     <header>
-      <h1>Welcome to Rancid Tomatillo</h1>
+      <Link to='/' onClick={() => changeLoading(false)}><h1>Welcome to Rancid Tomatillo</h1></Link>
       <Link to='/login'>Sign In</Link>
     </header>
-  ) 
+  )
   }
 
   return (
   <header>
-    <h1>Welcome to Rancid Tomatillo</h1>
+    <Link to='/' onClick={() => changeLoading(false)}><h1>Welcome to Rancid Tomatillo</h1></Link>
     <button onClick={signOut}>Sign Out</button>
   </header>
   )
@@ -25,7 +25,8 @@ const Header = ({ user, signOut }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  signOut: () => dispatch( signOut() )
+  signOut: () => dispatch( signOut() ),
+  changeLoading: (isLoading) => dispatch( changeLoading(isLoading))
 });
 
 export default connect(null, mapDispatchToProps)(Header)
