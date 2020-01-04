@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { postRating, getUserRatings } from '../../apiCalls';
 import { updateRatings } from '../../Actions';
 import { connect } from 'react-redux';
+import { getMovies } from '../../apiCalls';
+import { setMovies } from '../../Actions';
+
+
 
 
 class RatingForm extends Component {
@@ -35,11 +39,13 @@ class RatingForm extends Component {
         <button onClick={() => {
           postRating(this.props.movieId, this.state.currentRating, this.props.userId)
             .then(data => {
-              console.log(data);
               getUserRatings(data.rating.user_id)
                 .then(ratings => {
-                  console.log(ratings)
-                  this.props.updateRatings(ratings);
+                  this.props.updateRatings(ratings.ratings);
+                  getMovies()
+                  .then(data => {
+                    this.props.setMovies(data.movies);
+                  })
                 })
             })
         }}>SUBMIT.....DAT.....RATING</button>
@@ -49,7 +55,8 @@ class RatingForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateRatings: ratings => dispatch( updateRatings(ratings) )
+  updateRatings: ratings => dispatch( updateRatings(ratings) ),
+  setMovies: (movies) => dispatch(setMovies(movies))
 })
 
 export default connect(null, mapDispatchToProps)(RatingForm);
