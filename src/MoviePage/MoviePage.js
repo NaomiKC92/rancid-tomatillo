@@ -3,7 +3,7 @@ import { user } from '../Reducers/UserReducer';
 
 const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overview, average_rating, user }) => {
   let userRating;
-  if (user) {
+  if (user && user.ratings.find(rating => rating.movie_id === id)) {
     userRating = user.ratings.find(rating => rating.movie_id === id).rating
   }
   return (

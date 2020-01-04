@@ -8,7 +8,7 @@ const Header = ({ user, signOut, changeLoading }) => {
   if (!user) {
   return (
     <header>
-      <Link to='/' onClick={() => changeLoading(false)}><h1>Welcome to Rancid Tomatillo</h1></Link>
+      <Link to='/' onClick={() => changeLoading(true)}><h1>Welcome to Rancid Tomatillo</h1></Link>
       <Link to='/login'>Sign In</Link>
     </header>
   )
@@ -16,7 +16,7 @@ const Header = ({ user, signOut, changeLoading }) => {
 
   return (
   <header>
-    <Link to='/' onClick={() => changeLoading(false)}><h1>Welcome to Rancid Tomatillo</h1></Link>
+    <Link to='/' onClick={() => changeLoading(true)}><h1>Welcome to Rancid Tomatillo</h1></Link>
     <button onClick={signOut}>Sign Out</button>
   </header>
   )

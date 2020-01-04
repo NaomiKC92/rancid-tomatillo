@@ -35,8 +35,10 @@ class RatingForm extends Component {
         <button onClick={() => {
           postRating(this.props.movieId, this.state.currentRating, this.props.userId)
             .then(data => {
+              console.log(data);
               getUserRatings(data.rating.user_id)
                 .then(ratings => {
+                  console.log(ratings)
                   this.props.updateRatings(ratings);
                 })
             })

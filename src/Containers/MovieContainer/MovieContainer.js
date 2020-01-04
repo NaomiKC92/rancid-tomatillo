@@ -14,7 +14,7 @@ class MovieContainer extends Component {
     getMovies()
       .then(data => {
         this.props.setMovies(data.movies);
-        this.props.changeLoading(this.props.isLoading)
+        this.props.changeLoading(true)
       })
   }
 
@@ -37,7 +37,7 @@ class MovieContainer extends Component {
           backdrop={movie.backdrop_path}
           releaseDate={movie.release_date}
           overview={movie.overview}
-          avgRating={movie.avg_rating}
+          avgRating={movie.average_rating}
           userRating={movie.userRating}
           user={this.props.user}
           key={movie.id}
