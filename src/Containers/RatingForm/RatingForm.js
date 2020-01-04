@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { postRating, getUserRatings } from '../../apiCalls';
+import { postRating, getUserRatings, getMovies, deleteRating } from '../../apiCalls';
 import { updateRatings } from '../../Actions';
 import { connect } from 'react-redux';
-import { getMovies } from '../../apiCalls';
 import { setMovies } from '../../Actions';
 
 
@@ -18,6 +17,28 @@ class RatingForm extends Component {
 
   changeRating = number => {
     this.setState({ currentRating: parseInt(number) })
+  }
+
+  submitRating = () => {
+    postRating(this.props.movieId, this.state.currentRating, this.props.userId)
+      .then(data => {
+        getUserRatings(data.rating.user_id)
+          .then(ratings => {
+            this.props.updateRatings(ratings.ratings);
+            getMovies()
+            .then(data => {
+              this.props.setMovies(data.movies);
+            })
+          })
+      })
+  }
+
+  updateRating = () => {
+    console.log(this.props.userId, this.props.ratingId);
+    deleteRating(this.props.userId, this.props.ratingId)
+      .then(data => {
+        this.submitRating();
+      })
   }
 
   render() {
@@ -36,19 +57,8 @@ class RatingForm extends Component {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        <button onClick={() => {
-          postRating(this.props.movieId, this.state.currentRating, this.props.userId)
-            .then(data => {
-              getUserRatings(data.rating.user_id)
-                .then(ratings => {
-                  this.props.updateRatings(ratings.ratings);
-                  getMovies()
-                  .then(data => {
-                    this.props.setMovies(data.movies);
-                  })
-                })
-            })
-        }}>SUBMIT.....DAT.....RATING</button>
+        {this.props.ratingId ? <button onClick={this.updateRating}>UPDATE.....DAT.....RATING</button> : 
+        <button onClick={this.submitRating}>SUBMIT.....DAT.....RATING</button>}
       </>
     )
   }
