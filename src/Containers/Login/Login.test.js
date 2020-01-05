@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Login, mapDispatchToProps } from './Login'
+import { Login, mapDispatchToProps } from './Login';
+import { addUser, changeLoading } from '../../Actions';
 
 describe('Login', () => {
   let wrapper;
@@ -28,8 +29,31 @@ describe('Login', () => {
     
     //if happy path, just check that loginUser has been called
 
-  // REDUX TESTING
+  describe('mapDispatchToProps', () => {
+    let mockDispatch;
+    beforeEach( () => {
+      mockDispatch = jest.fn();
+    })
 
+    it('should call dispatch with an addUser action when submitUser is called', () => {
+      const user = {email: 'greg@turing.io', password: 'abc123'};
+      const actionToDispatch = addUser(user);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.submitUser(user)
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('should call dispatch with a changeLoading action when the changeLoading method is called', () => {
+      const actionToDispatch = changeLoading(false);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.changeLoading(false);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+  });
   
 
 });
