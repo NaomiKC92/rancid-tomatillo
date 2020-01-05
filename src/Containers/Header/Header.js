@@ -8,8 +8,8 @@ const Header = ({ user, signOut, changeLoading }) => {
   if (!user) {
   return (
     <header>
-      <Link to='/' onClick={() => changeLoading(true)}><h1>Welcome to Rancid Tomatillo</h1></Link>
-      <Link to='/login'>Sign In</Link>
+      <Link to='/' onClick={() => changeLoading(true)} className='title-link'><h1>RANCID TOMATILLO</h1></Link>
+      <Link to='/login' className='login-link'>Sign In</Link>
     </header>
   )
   }
