@@ -5,7 +5,7 @@ import Loading from '../../Components/Loading/Loading';
 import { getMovies } from '../../apiCalls';
 import { setMovies, changeLoading } from '../../Actions';
 
-class MovieContainer extends Component {
+export class MovieContainer extends Component {
   constructor() {
     super();
   }
@@ -52,13 +52,13 @@ class MovieContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
   isLoading: state.isLoading,
   user: state.user
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   changeLoading: (isLoading) => dispatch( changeLoading(isLoading)),
   setMovies: (movies) => dispatch(setMovies(movies))
 });
