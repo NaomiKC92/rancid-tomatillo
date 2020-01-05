@@ -16,6 +16,7 @@ h1 {
   text-decoration: none;
 }
 
+.logout-link,
 .login-link {
   font-family: 'Limelight', cursive;
   top: 45px;
@@ -33,4 +34,7 @@ h1 {
     }
 }
 
+.logout-link {
+  margin: 0;
+}
 

@@ -16,8 +16,8 @@ const Header = ({ user, signOut, changeLoading }) => {
 
   return (
   <header>
-    <Link to='/' onClick={() => changeLoading(true)}><h1>Welcome to Rancid Tomatillo</h1></Link>
-    <button onClick={signOut}>Sign Out</button>
+    <Link to='/' onClick={() => changeLoading(true)} className='title-link'><h1>RANCID TOMATILLO</h1></Link>
+    <button onClick={signOut} className='logout-link'>Sign Out</button>
   </header>
   )
   //if there is a user -> show a logout button
