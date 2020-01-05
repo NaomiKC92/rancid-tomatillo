@@ -4,14 +4,8 @@ import { user } from '../Reducers/UserReducer';
 const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overview, average_rating, user }) => {
   let userRating;
   if (user) {
-    userRating = user.ratings.find(rating => rating.movie_id === id).rating
-  }
-  return (
-    <section className='movie-page'>
-      <h1>{title}</h1>
-      <p>{release_date}</p>
-      <p>{overview}</p>
-      <p>{average_rating}</p>
+    console.log(user);
+    let userRating = user.ratings.find(rating => rating.movie_id === id)
       <p>{userRating ? userRating : ''}</p>
     </section>
   )

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import RatingForm from '../../Containers/RatingForm/RatingForm';
 
 const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, userRating, user }) => {
+
   return (
     <article className='movie-card'>
       <img src={poster} className='movie-poster'/>
@@ -17,5 +18,6 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
     </article>
   )
 }
+
 
 export default Movie
