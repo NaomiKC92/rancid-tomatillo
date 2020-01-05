@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Header from '../../Containers/Header/Header';
 import MoviePage from '../../MoviePage/MoviePage';
 
-const App = ({ movies, user }) => {
+export const App = ({ movies, user }) => {
   return (
     <div className='App'>
       <Header user={user}/>
@@ -22,7 +22,7 @@ const App = ({ movies, user }) => {
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
   user: state.user
 })
