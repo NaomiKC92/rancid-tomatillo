@@ -29,9 +29,8 @@ describe('MovieContainer', () => {
       mappedProps.setMovies(movies);
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-    });
+    })
 
-  })
+  });
 
-
-})
+});
