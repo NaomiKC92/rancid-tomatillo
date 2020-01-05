@@ -14,7 +14,7 @@ class MovieContainer extends Component {
     getMovies()
       .then(data => {
         this.props.setMovies(data.movies);
-        this.props.changeLoading(this.props.isLoading)
+        this.props.changeLoading(true)
       })
   }
 
@@ -23,11 +23,9 @@ class MovieContainer extends Component {
       return <Loading />
     }
     const displayMovies = this.props.movies.map(movie => {
-      if (this.props.user) {
+      if (this.props.user && this.props.user.ratings.find(rating => rating.movie_id === movie.id)) {
         let foundRating = this.props.user.ratings.find(rating => rating.movie_id === movie.id);
-        if (foundRating) {
-          movie.userRating = foundRating.rating;
-        }
+        movie.userRating = foundRating.rating;
       }
       return (
         <Movie
@@ -37,7 +35,7 @@ class MovieContainer extends Component {
           backdrop={movie.backdrop_path}
           releaseDate={movie.release_date}
           overview={movie.overview}
-          avgRating={movie.avg_rating}
+          avgRating={movie.average_rating}
           userRating={movie.userRating}
           user={this.props.user}
           key={movie.id}
