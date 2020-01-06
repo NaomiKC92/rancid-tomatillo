@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { postRating, getUserRatings, getMovies, deleteRating } from '../../apiCalls';
-import { updateRatings } from '../../Actions';
+import { updateRatings, setMovies } from '../../Actions';
 import { connect } from 'react-redux';
-import { setMovies } from '../../Actions';
 
 
 
 
-class RatingForm extends Component {
+export class RatingForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -34,7 +33,6 @@ class RatingForm extends Component {
   }
 
   updateRating = () => {
-    console.log(this.props.userId, this.props.ratingId);
     deleteRating(this.props.userId, this.props.ratingId)
       .then(data => {
         this.submitRating();
@@ -57,14 +55,14 @@ class RatingForm extends Component {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        {this.props.ratingId ? <button onClick={this.updateRating}>UPDATE.....DAT.....RATING</button> : 
-        <button onClick={this.submitRating}>SUBMIT.....DAT.....RATING</button>}
+        {this.props.ratingId ? <button id='update-btn' onClick={this.updateRating}>UPDATE.....DAT.....RATING</button> : 
+        <button id='submit-btn' onClick={this.submitRating}>SUBMIT.....DAT.....RATING</button>}
       </>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   updateRatings: ratings => dispatch( updateRatings(ratings) ),
   setMovies: (movies) => dispatch(setMovies(movies))
 })
