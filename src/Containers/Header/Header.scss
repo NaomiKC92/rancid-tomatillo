@@ -1,0 +1,41 @@
+header {
+  border: 6px ridge white;
+  position: relative;
+  margin: 12px;
+  margin-bottom: 75px;
+}
+
+h1 {
+  font-family: 'Limelight', cursive;
+  color: #FFF;
+  font-size: 400%;
+  padding: 10px;
+  margin: 12px;
+}
+
+.title-link {
+  text-decoration: none;
+}
+
+.logout-link,
+.login-link {
+  font-family: 'Limelight', cursive;
+  top: 45px;
+  right: 80px;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 135%;
+  margin-right: 25px;
+  position: absolute;
+    &:hover {
+      font-style: italic;
+    }
+    &:active {
+      transform: scale(.97)
+    }
+}
+
+.logout-link {
+  margin: 0;
+}
+

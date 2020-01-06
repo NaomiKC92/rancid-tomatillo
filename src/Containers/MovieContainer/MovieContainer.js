@@ -41,7 +41,6 @@ export class MovieContainer extends Component {
 
     return (
       <main>
-        <h1>Oh hello - Movies Here</h1>
         {displayMovies}
       </main>
     )
