@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviePage should match the snapshot when there is a user and a userRating 1`] = `ShallowWrapper {}`;
+
+exports[`MoviePage should match the snapshot when there is no user 1`] = `ShallowWrapper {}`;
