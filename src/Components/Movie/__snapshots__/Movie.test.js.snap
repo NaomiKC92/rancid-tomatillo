@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Movie should match the snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`Movie should match the snapshot when there is a userRating 1`] = `ShallowWrapper {}`;

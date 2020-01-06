@@ -54,7 +54,6 @@ export const postRating = (id, rating, userId) => {
 export const deleteRating = (userID, ratingID) => {
   return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userID}/ratings/${ratingID}`, {method: 'DELETE'})
     .then(res => {
-      console.log(res);
       if (!res.ok) {
         throw Error('Could not find rating to delete')
       }
