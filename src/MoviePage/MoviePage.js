@@ -1,5 +1,4 @@
 import React from 'react';
-import { user } from '../Reducers/UserReducer';
 import RatingForm from '../Containers/RatingForm/RatingForm';
 
 const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overview, average_rating, user }) => {

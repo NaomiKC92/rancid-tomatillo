@@ -6,10 +6,6 @@ import { getMovies } from '../../apiCalls';
 import { setMovies, changeLoading } from '../../Actions';
 
 export class MovieContainer extends Component {
-  constructor() {
-    super();
-  }
-
   componentDidMount() {
     getMovies()
       .then(data => {

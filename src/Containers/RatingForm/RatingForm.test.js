@@ -61,20 +61,10 @@ describe('RatingForm', () => {
   });
 
   describe('submitRating', () => {
-    let wrapper, mockUpdateRatings, mockSetMovies, mockRatings;
+    let wrapper, mockUpdateRatings, mockSetMovies;
     beforeEach(() => {
       mockUpdateRatings = jest.fn();
       mockSetMovies = jest.fn();
-      mockRatings = [
-        {
-          id: 1, 
-          user_id: 1, 
-          movie_id: 1, 
-          rating: 6, 
-          created_at: "someDate", 
-          updated_at: "someDate"
-        }
-    ];
       wrapper = shallow(<RatingForm
         updateRatings={mockUpdateRatings}
         setMovies={mockSetMovies}

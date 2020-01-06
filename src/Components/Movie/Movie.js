@@ -10,7 +10,7 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
   }
   return (
     <article className='movie-card'>
-      <img src={poster} className='movie-poster'/>
+      <img alt={`${title}-poster`} src={poster} className='movie-poster'/>
       <h2>{title}</h2>
       <p>{releaseDate}</p>
       <p>{overview}</p>
