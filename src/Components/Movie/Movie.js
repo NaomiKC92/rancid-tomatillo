@@ -8,16 +8,26 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
   if (user && user.ratings.find(rating => rating.movie_id === id)) {
     userRating = user.ratings.find(rating => rating.movie_id === id);
   }
+
+  releaseDate = releaseDate.split("-").reverse().join("/").slice(3)
+
   return (
     <article className='movie-card'>
       <img src={poster} className='movie-poster'/>
-      <h2>{title}</h2>
-      <p>{releaseDate}</p>
-      <p>{overview}</p>
-      <p>Average Rating: {avgRating}</p>
-      {userRating && <p> Your Rating: {userRating.rating}</p>}
-      {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
-      <Link to={`movies/${id}`}>Show More</Link>
+      <section className='all-card-info'>
+        <div className='title-rating-wrap'>
+          <div className='title-date'>
+            <h2 className='movie-card-title'>{title}</h2>
+            <p className='release-date'>Released: {releaseDate}</p>
+          </div>
+          <div className='ratings-section'>
+            <p className='avg-rating'>Avg Rating: {avgRating.toFixed()}</p>
+            {userRating && <p> Your Rating: {userRating.rating}</p>}
+            {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
+          </div>
+        </div>
+        <Link to={`movies/${id}`} className='show-more'>Show More</Link>
+      </section>
     </article>
   )
 }
