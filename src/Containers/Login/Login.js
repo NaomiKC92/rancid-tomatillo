@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { addUser, changeLoading } from '../../Actions';
 
 
-class Login extends Component {
+export class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -95,7 +95,7 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   submitUser: user => dispatch( addUser(user) ),
   changeLoading: (isLoading) => dispatch( changeLoading(isLoading))
 })
