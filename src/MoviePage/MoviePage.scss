@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  color: #FFF;
+}
+
+.movie-page {
+  height: 75vh;
+  margin: auto;
+  width: 100%;
+}
+
+.backdrop {
+  filter: brightness(.5);
+  position: relative;
+  width: 85%;
+  z-index: -2;
+}
+
+.movie-page-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 25%;
+  margin-top: -510px;
+  width: 50%;
+}
+
+.movie-page-title {
+  font-size: 350%;
+}
+
+.release-date {
+  font-size: 125%;
+  font-weight: 700;
+}
+
+.overview {
+  font-size: 112%;
+  font-weight: 700;
+}
+
+.page-ratings {
+  display: flex;
+  flex-direction: row;
+  font-size: 125%;
+  font-weight: 700;
+  justify-content: space-between;
+}

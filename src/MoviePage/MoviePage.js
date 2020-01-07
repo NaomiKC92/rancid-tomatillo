@@ -1,20 +1,32 @@
 import React from 'react';
 import RatingForm from '../Containers/RatingForm/RatingForm';
 import PropTypes from 'prop-types';
+import './MoviePage.scss'
 
 const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overview, average_rating, user }) => {
   let userRating;
   if (user && user.ratings.find(rating => rating.movie_id === id)) {
     userRating = user.ratings.find(rating => rating.movie_id === id)
   }
+
+  let releaseDate = release_date.split('-').reverse().join('/').slice(3);
+
+  let avgRating = average_rating.toFixed();
+  
+
   return (
     <section className='movie-page'>
-      <h1>{title}</h1>
-      <p>{release_date}</p>
-      <p>{overview}</p>
-      <p>Average Rating: {average_rating}</p>
-      <p>{userRating ? `Your Rating: ${userRating.rating}` : ''}</p>
-      {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
+      <img src={backdrop_path} className='backdrop'/>
+      <div className='movie-page-info'>
+        <h1 className='movie-page-title'>{title}</h1>
+        <p className='release-date'>Released: {releaseDate}</p>
+        <p className='overview'>{overview}</p>
+        <div className='page-ratings'>
+          <p>Avg Rating: {avgRating}</p>
+          <p>{userRating ? `Your Rating: ${userRating.rating}` : ''}</p>
+        </div>
+          {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
+      </div>
     </section>
   )
 }

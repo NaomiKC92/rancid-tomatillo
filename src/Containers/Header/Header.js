@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { signOut, changeLoading } from '../../Actions';
 import PropTypes from 'prop-types';
 
-const Header = ({ user, signOut, changeLoading }) => {
+export const Header = ({ user, signOut, changeLoading }) => {
   if (!user) {
   return (
     <header>
@@ -21,11 +21,9 @@ const Header = ({ user, signOut, changeLoading }) => {
     <button onClick={signOut} className='logout-link'>Sign Out</button>
   </header>
   )
-  //if there is a user -> show a logout button
-  //this logout button will have a redirect to homepage and update global state to null user
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch( signOut() ),
   changeLoading: (isLoading) => dispatch( changeLoading(isLoading))
 });

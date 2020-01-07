@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`header should match the snapshot with all correct data passing through 1`] = `ShallowWrapper {}`;
+exports[`Header should match the snapshot with a user 1`] = `ShallowWrapper {}`;
+
+exports[`Header should match the snapshot with no user 1`] = `ShallowWrapper {}`;
