@@ -1,5 +1,3 @@
-import React from 'react';
-import './MovieContainer';
 import { MovieContainer, mapDispatchToProps } from './MovieContainer';
 import { setMovies, changeLoading } from '../../Actions';
 

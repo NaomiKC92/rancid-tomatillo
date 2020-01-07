@@ -4,7 +4,10 @@ import { shallow } from 'enzyme';
 
 describe('Movie', () => {
   it('should match the snapshot', () => {
-    const wrapper = shallow(<Movie />);
+    const wrapper = shallow(<Movie 
+      releaseDate='12-20-2019'
+      avgRating={7}
+    />);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -18,7 +21,7 @@ describe('Movie', () => {
     };
     const mockId = 7;
 
-    const wrapper = shallow(<Movie user={mockUser} id={mockId}/>);
+    const wrapper = shallow(<Movie avgRating={7} releaseDate='12-20-2019' user={mockUser} id={mockId}/>);
 
     expect(wrapper).toMatchSnapshot();
   })

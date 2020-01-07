@@ -2,12 +2,36 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Login, mapDispatchToProps } from './Login';
 import { addUser, changeLoading } from '../../Actions';
+import { getUser, getUserRatings } from '../../apiCalls';
+
+jest.mock('../../apiCalls.js');
 
 describe('Login', () => {
   let wrapper;
 
   beforeEach( () => {
     wrapper = shallow(<Login />)
+    getUser.mockImplementation(() => {
+      return Promise.resolve({
+        user: {
+          id: 4
+        }
+      });
+    });
+    getUserRatings.mockImplementation(() => {
+      return Promise.resolve({
+        ratings: [
+          {
+            id: 1,
+            user_id: 1,
+            movie_id: 1,
+            rating: 6,
+            created_at: "someDate",
+            updated_at: "someDate"
+          }
+        ]
+      })
+    })
   })
 
   it('should match the snapshot', () => {
@@ -20,14 +44,93 @@ describe('Login', () => {
 
     wrapper.instance().handleChange(mockEvent)
 
-    expect(wrapper.state('email')).toEqual('greg@turing.io')
+    expect(wrapper.state('email')).toEqual(expected);
   })
 
-  //How do I test checkInputs function??
-    // create mock state for whole component 
-    //maybe leave one empty so that can trigger the errror
-    
-    //if happy path, just check that loginUser has been called
+  describe('checkInputs', () => {
+
+    it('should switch the error state property to "error" if there is nothing in the corresponding input name', () => {
+      const mockState = {
+        email: '',
+        password: 'abc123',
+        error: {
+        email: '',
+        password: '',
+        }
+      };
+      const mockErrorState = {
+          email: 'error',
+          password: ''
+      }
+      wrapper.setState(mockState);
+  
+      wrapper.find('button').simulate('click');
+      expect(wrapper.state('error')).toEqual(mockErrorState);
+    });
+
+    it('should invoke logInUser when checkInputs is fired', () => {
+      wrapper.instance().logInUser = jest.fn();
+      wrapper.instance().checkInputs();
+
+      expect(wrapper.instance().logInUser).toHaveBeenCalled();
+    })
+  })
+
+  describe('logInUser', () => {
+    let wrapper, mockState, mockUser;
+
+    beforeEach(() => {
+      wrapper = shallow(<Login 
+        submitUser={() => jest.fn()}
+        changeLoading={() => jest.fn()}
+      />)
+      mockUser = {
+        email: 'greg@turing.io',
+        password: 'abc123' 
+      };
+      mockState = {
+        email: 'greg@turing.io',
+        password: 'abc123',
+        ready: false,
+        message: ''
+      }
+    });
+
+    it('should invoke getUser when logInUser is fired', () => {
+      wrapper.setState(mockState);
+      wrapper.instance().logInUser();
+
+      expect(getUser).toHaveBeenCalledWith(mockUser);
+    });
+
+    it('should invoke getUserRatings when logInUser is fired', () => {
+      wrapper.setState(mockState);
+      wrapper.instance().logInUser();
+
+      expect(getUserRatings).toHaveBeenCalledWith(4);
+    })
+
+    it('should set the ready state to true if getUserRatings promise is resolved', async () => {
+      wrapper.setState(mockState);
+      await wrapper.instance().logInUser();
+
+      expect(wrapper.state('ready')).toEqual(true);
+    });
+
+    // it('should update error state with error message if getUser or getUserRatings promise is rejected', async () => {
+    //   getUser.mockImplementation(() => {
+    //     return Promise.reject({
+    //       message: 'NOOO'
+    //     })
+    //   });
+    //   wrapper.setState(mockState);
+    //   await wrapper.instance().logInUser();
+
+    //   expect(wrapper.state('message')).toEqual('NOOO');
+    // })
+
+
+  })
 
   describe('mapDispatchToProps', () => {
     let mockDispatch;
