@@ -1,0 +1,28 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.rating-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.rating-btn {
+  font-family: 'Quicksand', sans-serif;
+  background: #000;
+  border: 2px ridge #FFF;
+  border-radius: 3px;
+  font-size: 100%;
+  font-weight: 700;
+}
+
+select {
+  width: 90px;
+  height: 30px;
+  background-color: #000;
+  border: 2px ridge #FFF;
+  font-size: 100%;
+  font-weight: 700;
+}

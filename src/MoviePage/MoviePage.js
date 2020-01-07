@@ -23,7 +23,7 @@ const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overvi
         <p className='overview'>{overview}</p>
         <div className='page-ratings'>
           <p>Avg Rating: {avgRating}</p>
-          <p>{userRating ? `Your Rating: ${userRating.rating}` : ''}</p>
+          <p className='your-rating'>{userRating ? `Your Rating: ${userRating.rating}` : ''}</p>
         </div>
           {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
       </div>
