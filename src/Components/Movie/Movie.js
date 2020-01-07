@@ -2,6 +2,7 @@ import React from 'react';
 import './Movie.scss';
 import { Link } from 'react-router-dom';
 import RatingForm from '../../Containers/RatingForm/RatingForm';
+import PropTypes from 'prop-types';
 
 const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, user }) => {
   let userRating;
@@ -33,3 +34,14 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
 }
 
 export default Movie;
+
+Movie.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  releaseDate: PropTypes.string,
+  poster: PropTypes.string,
+  backdrop: PropTypes.string,
+  overview: PropTypes.string,
+  avgRating: PropTypes.number,
+  user: PropTypes.object 
+}

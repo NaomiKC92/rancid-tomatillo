@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { postRating, getUserRatings, getMovies, deleteRating } from '../../apiCalls';
 import { updateRatings, setMovies } from '../../Actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 
 
@@ -68,3 +70,11 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(RatingForm);
+
+RatingForm.propTypes = {
+  updateRatings: PropTypes.func,
+  setMovies: PropTypes.func,
+  userId: PropTypes.number,
+  ratingId: PropTypes.number,
+  movieId: PropTypes.number
+}

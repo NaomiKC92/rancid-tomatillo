@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getUser, getUserRatings } from '../../apiCalls';
 import { Redirect } from 'react-router-dom';
 import { addUser, changeLoading } from '../../Actions';
+import PropTypes from 'prop-types';
 
 
 export class Login extends Component {
@@ -102,3 +103,8 @@ export const mapDispatchToProps = dispatch => ({
 
 
 export default connect(null, mapDispatchToProps)(Login);
+
+Login.propTypes = {
+  submitUser: PropTypes.func,
+  changeLoading: PropTypes.func
+}

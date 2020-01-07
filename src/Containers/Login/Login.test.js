@@ -111,7 +111,11 @@ describe('Login', () => {
     })
 
     it('should set the ready state to true if getUserRatings promise is resolved', async () => {
-      wrapper.setState(mockState);
+      const wrapper = shallow(<Login 
+        submitUser={() => jest.fn()}
+        changeLoading={() => jest.fn()}
+      />)
+      await wrapper.setState(mockState);
       await wrapper.instance().logInUser();
 
       expect(wrapper.state('ready')).toEqual(true);
