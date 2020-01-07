@@ -135,6 +135,18 @@ describe('RatingForm', () => {
 
       expect(getMovies).toHaveBeenCalled();
     });
+
+    it('should invoke updateRatings when submitRating is fired', async () => {
+      const mockUpdateRatings = jest.fn();
+      const wrapper = shallow(<RatingForm 
+        updateRatings={mockUpdateRatings}
+      />)
+
+      await wrapper.instance().submitRating();
+      await wrapper.instance().forceUpdate();
+      
+      expect(mockUpdateRatings).toHaveBeenCalled();
+    })
   });
 
   describe('updateRating', () => {
