@@ -3,9 +3,7 @@ import { postRating, getUserRatings, getMovies, deleteRating } from '../../apiCa
 import { updateRatings, setMovies } from '../../Actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-
-
+import './RatingForm.scss'
 
 
 export class RatingForm extends Component {
@@ -43,9 +41,9 @@ export class RatingForm extends Component {
 
   render() {
     return (
-      <>
+      <section className='rating-form'>
         <select name='rating' onChange={e => this.changeRating(e.target.value)}>
-          <option value=''>--Rate Movie--</option>
+          <option value=''>--Rate--</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
@@ -57,9 +55,9 @@ export class RatingForm extends Component {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        {this.props.ratingId ? <button id='update-btn' onClick={this.updateRating}>UPDATE.....DAT.....RATING</button> : 
-        <button id='submit-btn' onClick={this.submitRating}>SUBMIT.....DAT.....RATING</button>}
-      </>
+        {this.props.ratingId ? <button id='update-btn' className='rating-btn' onClick={this.updateRating}>Update</button> : 
+        <button id='submit-btn' className='rating-btn' onClick={this.submitRating}>Update</button>}
+      </section>
     )
   }
 }

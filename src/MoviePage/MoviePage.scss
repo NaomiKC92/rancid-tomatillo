@@ -39,10 +39,36 @@
   font-weight: 700;
 }
 
+
 .page-ratings {
   display: flex;
   flex-direction: row;
   font-size: 125%;
   font-weight: 700;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.show-page-rating {
+  font-size: 112%;
+}
+
+.show-page-rating-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+    button {
+      margin: 0;
+      width: 149px;
+      height: 35px;
+      background-color: transparent;
+      font-size: 122%;
+    }
+
+    select {
+      background-color: transparent;
+      width: 149px;
+      height: 35px;
+      font-size: 122%;
+    }
 }

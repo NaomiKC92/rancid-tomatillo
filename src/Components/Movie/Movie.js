@@ -23,7 +23,7 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
           </div>
           <div className='ratings-section'>
             <p className='avg-rating'>Avg Rating: {avgRating.toFixed()}</p>
-            {userRating && <p> Your Rating: {userRating.rating}</p>}
+            {userRating && <p className='your-rating'> Your Rating: {userRating.rating}</p>}
             {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
           </div>
         </div>
