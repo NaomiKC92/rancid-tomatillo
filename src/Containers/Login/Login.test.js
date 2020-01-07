@@ -115,6 +115,16 @@ describe('Login', () => {
 
       expect(getUserRatings).toHaveBeenCalledWith(4);
     });
+
+    it('should update error state if getUser or getUserRatings promise is rejected', async () => {
+      wrapper.setState(mockState);
+      getUser.mockImplementation(() => Promise.reject(Error('NOOO')));
+
+      await wrapper.instance().logInUser();
+      await wrapper.instance().forceUpdate();
+
+      expect(wrapper.state('message')).toEqual('NOOO');
+    })
   })
 
   describe('mapDispatchToProps', () => {
