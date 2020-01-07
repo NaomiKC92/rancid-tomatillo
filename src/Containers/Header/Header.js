@@ -3,6 +3,7 @@ import './Header.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signOut, changeLoading } from '../../Actions';
+import PropTypes from 'prop-types';
 
 const Header = ({ user, signOut, changeLoading }) => {
   if (!user) {
@@ -29,4 +30,10 @@ const mapDispatchToProps = dispatch => ({
   changeLoading: (isLoading) => dispatch( changeLoading(isLoading))
 });
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(null, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+  user: PropTypes.object,
+  signOut: PropTypes.func,
+  changeLoading: PropTypes.func
+}

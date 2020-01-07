@@ -4,6 +4,7 @@ import Movie from '../../Components/Movie/Movie';
 import Loading from '../../Components/Loading/Loading';
 import { getMovies } from '../../apiCalls';
 import { setMovies, changeLoading } from '../../Actions';
+import PropTypes from 'prop-types';
 
 export class MovieContainer extends Component {
   componentDidMount() {
@@ -60,3 +61,11 @@ export const mapDispatchToProps = dispatch => ({
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieContainer);
+
+MovieContainer.propTypes = {
+  changeLoading: PropTypes.func,
+  setMovies: PropTypes.func,
+  isLoading: PropTypes.bool,
+  movies: PropTypes.array,
+  user: PropTypes.object
+}

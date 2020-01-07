@@ -6,6 +6,7 @@ import Login from '../../Containers/Login/Login';
 import { connect } from 'react-redux';
 import Header from '../../Containers/Header/Header';
 import MoviePage from '../../MoviePage/MoviePage';
+import PropTypes from 'prop-types';
 
 export const App = ({ movies, user }) => {
   return (
@@ -24,6 +25,11 @@ export const App = ({ movies, user }) => {
 export const mapStateToProps = state => ({
   movies: state.movies,
   user: state.user
-})
+});
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);
+
+App.propTypes = {
+  movies: PropTypes.array,
+  user: PropTypes.object
+};

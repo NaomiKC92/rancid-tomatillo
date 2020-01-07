@@ -1,5 +1,6 @@
 import React from 'react';
 import RatingForm from '../Containers/RatingForm/RatingForm';
+import PropTypes from 'prop-types';
 
 const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overview, average_rating, user }) => {
   let userRating;
@@ -18,4 +19,15 @@ const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overvi
   )
 }
 
-export default MoviePage
+export default MoviePage;
+
+MoviePage.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  poster_path: PropTypes.string,
+  backdrop_path: PropTypes.string,
+  overview: PropTypes.string,
+  average_rating: PropTypes.number,
+  user: PropTypes.object
+}
