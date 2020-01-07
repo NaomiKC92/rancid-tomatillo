@@ -10,11 +10,13 @@ describe('Login', () => {
   let wrapper;
 
   beforeEach( () => {
-    wrapper = shallow(<Login />)
     getUser.mockImplementation(() => {
       return Promise.resolve({
         user: {
-          id: 4
+          id: 4,
+          name: 'Greg',
+          email: 'greg@turing.io',    
+          ratings: []
         }
       });
     });
@@ -32,8 +34,12 @@ describe('Login', () => {
         ]
       })
     })
+    wrapper = shallow(<Login 
+      submitUser={jest.fn()}
+      changeLoading={jest.fn()}
+    />)
   })
-
+  
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   })
@@ -81,8 +87,8 @@ describe('Login', () => {
 
     beforeEach(() => {
       wrapper = shallow(<Login 
-        submitUser={() => jest.fn()}
-        changeLoading={() => jest.fn()}
+        submitUser={jest.fn()}
+        changeLoading={jest.fn()}
       />)
       mockUser = {
         email: 'greg@turing.io',
@@ -108,32 +114,7 @@ describe('Login', () => {
       wrapper.instance().logInUser();
 
       expect(getUserRatings).toHaveBeenCalledWith(4);
-    })
-
-    it('should set the ready state to true if getUserRatings promise is resolved', async () => {
-      const wrapper = shallow(<Login 
-        submitUser={() => jest.fn()}
-        changeLoading={() => jest.fn()}
-      />)
-      await wrapper.setState(mockState);
-      await wrapper.instance().logInUser();
-
-      expect(wrapper.state('ready')).toEqual(true);
     });
-
-    // it('should update error state with error message if getUser or getUserRatings promise is rejected', async () => {
-    //   getUser.mockImplementation(() => {
-    //     return Promise.reject({
-    //       message: 'NOOO'
-    //     })
-    //   });
-    //   wrapper.setState(mockState);
-    //   await wrapper.instance().logInUser();
-
-    //   expect(wrapper.state('message')).toEqual('NOOO');
-    // })
-
-
   })
 
   describe('mapDispatchToProps', () => {
