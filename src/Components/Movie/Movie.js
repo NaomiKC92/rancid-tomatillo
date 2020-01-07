@@ -14,7 +14,7 @@ const Movie = ({id, title, releaseDate, poster, backdrop, overview, avgRating, u
 
   return (
     <article className='movie-card'>
-      <img src={poster} className='movie-poster'/>
+      <img alt={title} src={poster} className='movie-poster'/>
       <section className='all-card-info'>
         <div className='title-rating-wrap'>
           <div className='title-date'>
@@ -43,5 +43,5 @@ Movie.propTypes = {
   backdrop: PropTypes.string,
   overview: PropTypes.string,
   avgRating: PropTypes.number,
-  user: PropTypes.object 
+  user: PropTypes.object
 }

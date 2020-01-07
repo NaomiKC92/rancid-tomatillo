@@ -12,11 +12,11 @@ const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overvi
   let releaseDate = release_date.split('-').reverse().join('/').slice(3);
 
   let avgRating = average_rating.toFixed();
-  
+
 
   return (
     <section className='movie-page'>
-      <img src={backdrop_path} className='backdrop'/>
+      <img alt={title} src={backdrop_path} className='backdrop'/>
       <div className='movie-page-info'>
         <h1 className='movie-page-title'>{title}</h1>
         <p className='release-date'>Released: {releaseDate}</p>
