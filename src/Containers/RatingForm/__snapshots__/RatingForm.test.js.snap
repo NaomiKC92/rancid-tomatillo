@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RatingForm should match snapshot if there is a userRating 1`] = `
-"<Fragment>
+"<section className=\\"rating-form\\">
   <select name=\\"rating\\" onChange={[Function: onChange]}>
     <option value=\\"\\">
-      --Rate Movie--
+      --Rate--
     </option>
     <option value={1}>
       1
@@ -37,17 +37,17 @@ exports[`RatingForm should match snapshot if there is a userRating 1`] = `
       10
     </option>
   </select>
-  <button id=\\"update-btn\\" onClick={[Function]}>
-    UPDATE.....DAT.....RATING
+  <button id=\\"update-btn\\" className=\\"rating-btn\\" onClick={[Function]}>
+    Update
   </button>
-</Fragment>"
+</section>"
 `;
 
 exports[`RatingForm should match snapshot if there is no userRating 1`] = `
-"<Fragment>
+"<section className=\\"rating-form\\">
   <select name=\\"rating\\" onChange={[Function: onChange]}>
     <option value=\\"\\">
-      --Rate Movie--
+      --Rate--
     </option>
     <option value={1}>
       1
@@ -80,8 +80,8 @@ exports[`RatingForm should match snapshot if there is no userRating 1`] = `
       10
     </option>
   </select>
-  <button id=\\"submit-btn\\" onClick={[Function]}>
-    SUBMIT.....DAT.....RATING
+  <button id=\\"submit-btn\\" className=\\"rating-btn\\" onClick={[Function]}>
+    Update
   </button>
-</Fragment>"
+</section>"
 `;
