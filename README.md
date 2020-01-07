@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rancid Tomatillos
 
-## Available Scripts
+## Welcome to Naomi, Nick, and Dustin's 'Rancid-Tomatillo' Movie Project
 
-In the project directory, you can run:
+Have you ever needed information on ONLY 20 random movies that may or may not be in theaters? Look no further!
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Feel free to pull down this repo, run 'npm install'
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:3000/`. Enter `control + c` in your terminal to stop the server at any time.
 
-### `npm test`
+If you want, feel free to run `npm test` to check out our coverage and make sure everything is passing!
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Wins
 
-### `npm run build`
+This project had a lot of ups and downs. I would say some of the best things that were accomplished: 
+1. Implementing testing in React as well as for async functions such as fetch. We needed to mock window.fetch which was an adventure to make sure our tests are still robust. We also we able to test our Redux global store as well which was a good challenge with props.
+1. Implementation of Redux was a large win and challenge for us. Although there is not necessarily enough data to justify using Redux, we wanted to practice the implementation and ability to do this.
+1. It was important to us to get as close to 100% tested as possible. Besides Router testing, we were able to test everything else.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Challenges
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Some of the bigger challenges of this project:
+1. We had some nested fetches in our components, which caused some problems with updating the correct data at the correct time. 
+1. We are still researching and determining what and when to test. We know that checking coverage is a good pulse check, but it's important to first make sure the tests themselves check what you want and test everything that can happen.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Future Iterations
 
-### `npm run eject`
+If given more time:
+1. We would have created a more interactive experience for the user. More animations and exciting UI for the user to experience with, such as movie trailers or interacting with other users. 
+1. We would like to ensure that our application is 100% accessible. It wasn't a priority for this one week project, but that's something we would like to ensure if given more time.
+1. We would like to dive deeper into testing and understand the best way to test React Router that ensures everything is happening correctly.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ScreenShots
+#### Home Page
+![welcomepage.gif](src/images/welcomepage.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Home Page with Logged In User
+![welcomepage.gif](src/images/welcomepage.gif)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Login Page
+![moviepage.gif](src/images/moviepage.gif)
 
-## Learn More
+#### MovieShow Page
+![characterloading.gif](src/images/characterloading.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### MovieShow Page with Logged In User
+![characterloading.gif](src/images/characterloading.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Collaborators
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Nick Nist](https://github.com/nicknist) | [Dustin Mikusko](https://github.com/dustin-mikusko) | [Naomi Campos](https://github.com/NaomiKC92)
