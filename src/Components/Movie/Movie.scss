@@ -23,10 +23,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .title-rating-wrap {
   display: flex;
+  width: 100%;
 }
 
 .title-date {
@@ -34,7 +36,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 15px;
-  width: 50%;
+  width: 49%;
 }
 
 .movie-card-title {
@@ -51,11 +53,12 @@
 }
 
 .ratings-section {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   margin: 20px 0;
-  width: 50%;
+  width: 51%;
 }
 
 .show-more {

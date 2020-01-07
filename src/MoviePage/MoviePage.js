@@ -22,10 +22,12 @@ const MoviePage = ({ id, title, release_date, poster_path, backdrop_path, overvi
         <p className='release-date'>Released: {releaseDate}</p>
         <p className='overview'>{overview}</p>
         <div className='page-ratings'>
-          <p>Avg Rating: {avgRating}</p>
-          <p className='your-rating'>{userRating ? `Your Rating: ${userRating.rating}` : ''}</p>
+          <p className='show-page-rating'>Avg Rating: {avgRating}</p>
+          <p className='show-page-rating'>{userRating ? `Your Rating: ${userRating.rating}` : ''}</p>
         </div>
+        <div className='show-page-rating-form'>
           {user && <RatingForm userId={user.id} ratingId={userRating ? userRating.id : undefined} movieId={id}/>}
+        </div>
       </div>
     </section>
   )
