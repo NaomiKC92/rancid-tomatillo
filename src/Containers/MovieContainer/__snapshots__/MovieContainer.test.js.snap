@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieContainer should match the snapshot 1`] = `undefined`;
+exports[`MovieContainer should match the snapshot when content is loading 1`] = `ShallowWrapper {}`;
+
+exports[`MovieContainer should match the snapshot when isLoading is false 1`] = `ShallowWrapper {}`;
+
+exports[`MovieContainer should match the snapshot when there is a user and a user rating 1`] = `ShallowWrapper {}`;
