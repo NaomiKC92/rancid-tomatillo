@@ -35,19 +35,19 @@ If given more time:
 
 ### ScreenShots
 #### Home Page
-![welcomepage.gif](src/images/welcomepage.gif)
+![welcomepage.gif](src/images/home_page.gif)
 
 #### Home Page with Logged In User
-![welcomepage.gif](src/images/welcomepage.gif)
+![welcomepage.gif](src/images/home_page_loggedin.gif)
 
-#### Login Page
-![moviepage.gif](src/images/moviepage.gif)
+#### Login Page - Unsuccessful Login
+![moviepage.gif](src/images/login_error.gif)
 
 #### MovieShow Page
-![characterloading.gif](src/images/characterloading.gif)
+![characterloading.gif](src/images/movie_show.gif)
 
 #### MovieShow Page with Logged In User
-![characterloading.gif](src/images/characterloading.gif)
+![characterloading.gif](src/images/movie_show_loggedin.gif)
 
 ## Collaborators
 
